@@ -10,7 +10,7 @@
 
 header {
     min-height: 40vh;
-    background-image: url(../Assets/bg-.webp); 
+    background-image: url(../AssetsTask2/bg-.webp); 
     background-size: cover;
     background-position: center;
 } 
@@ -81,7 +81,7 @@ footer {
 }
 
 .header-contact {
-    background-image: url(../Assets/bg-contact.jpg);
+    background-image: url(../AssetsTask2/bg-contact.jpg);
     background-size: cover;
     height: 40vh;
 }
@@ -102,7 +102,7 @@ footer {
 /* Stast */
 
 .main-container-stats{
-    background-image: url(../Assets/bg-contact.jpg);
+    background-image: url(../AssetsTask2/bg-contact.jpg);
     background-size: cover;
     min-height: 70vh;
     color: white;
@@ -175,7 +175,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(../Assets/bg-contact.jpg);
+    background-image: url(../AssetsTask2/bg-contact.jpg);
     border-radius: 10%;
     color: white;
 }
