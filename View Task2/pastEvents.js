@@ -1,25 +1,46 @@
 
 
-
-let sectionContainerCard = document.getElementById("card-section")
-sectionContainerCard.innerHTML= ""
+import { renderCards, render_check, filterByCheck, filterBySearch, filterGeneral } from "./module/funciones.js" 
 
 
-for (let every of data.events) {
-    if (data.currentDate > every.date) {  
-        console.log(every.date)
-    sectionContainerCard.innerHTML += `
-<div class="card"> 
-    <img src="${every.image}" class="card-img-top" alt="${every.name}">
-<div class="card-body">
-    <h5 class="card-title text-center">${every.name}</h5>
-    <p class="card-text">${every.description}</p>
-<div class= "container-p bg-warning p-2 text-center rounded">
-    <p class= "mt-3" > Price: ${every.price} </p>
-    <a id="information" href="./details.html" class="btn btn-dark">More</a>
-</div>
-</div>
-</div>
-`
-}
-}
+let card = document.getElementById("card-section"); //este es mi contenedor de card
+let events= data.events
+let pastEvent= events.filter(every => every.date <= data.currentDate) 
+let category = document.getElementById("checkboxContainer")  //mi contenedor div-de-los-checkbox
+let inputSearch = document.getElementById("input_search") // este directamente llama al input para luego hacer un evento (creo)
+
+
+
+// llamo a la function rendeCard
+renderCards(pastEvent, card) 
+
+// Hacer Check -Dinamico
+
+
+let array_category= [...new Set( pastEvent.map(element => element.category ) ) ]
+console.log(array_category) 
+
+//llamado a function render_check
+render_check(array_category,category)    
+
+
+category.addEventListener("change" , (e) => {
+    let checkFinish= filterGeneral(pastEvent, inputSearch) 
+    renderCards(checkFinish, card) 
+})
+
+
+
+inputSearch.addEventListener( "input", (y) => {
+    let inputFinish= filterGeneral(pastEvent, inputSearch) 
+    renderCards(inputFinish, card) 
+})
+
+
+
+
+
+
+
+
+
