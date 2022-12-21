@@ -1,29 +1,32 @@
 import { renderCards, render_check, filterByCheck, filterBySearch, filterGeneral } from "./module/funciones.js" 
 
 
-let card = document.getElementById("card-section"); //este es mi contenedor de card
-
-let events= data.events
-
-let upComing= events.filter(every => every.date >= data.currentDate) 
-
-let category = document.getElementById("checkboxContainer")  //mi contenedor div-de-los-checkbox
-
-let inputSearch = document.getElementById("input_search") // este directamente llama al input para luego hacer un evento (creo)
+let card = document.getElementById("card-section"); 
+let category = document.getElementById("checkboxContainer")  
+let inputSearch = document.getElementById("input_search") 
 
 
+let events; 
+let upComing; 
 
-// llamo a la function rendeCard
-renderCards(upComing, card) 
+fetch('https://amazing-events.onrender.com/api/events')  
+.then( res => { return res.json() } ) // .json me devuelve otra promesa
+.then( data => { 
+    events= data.events 
+    upComing= events.filter(every => every.date >= data.currentDate) 
+    renderCards(upComing, card) 
 
-//          Hacer Check -Dinamico
+    let array_category = [...new Set( upComing.map(element => element.category ))]
+    console.log(array_category) 
+    render_check(array_category,category)  
+} )
+.catch(err => {
+    card.innerHTML= `
+    <h3> "Error del servidor, estamos trabajando en ello para solucionarlo" </h3>
+    `
+}) 
 
 
-let array_category= [...new Set( upComing.map(element => element.category ) ) ]
-console.log(array_category) 
-
-//llamado a function render_check
-render_check(array_category,category)    
 
 //EVENTOS
 

@@ -108,14 +108,20 @@ footer {
     color: white;
 }
 
-.footer-stats {
-    height: 15vh;
+table{
+    margin:auto;
+    empty-cells: show;
+    width: 90%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
-
-.col {
-    padding: 0.5rem;
+table th{
+    background-color: #b90c0c;
 }
-
+table td, table th, table tr{
+    border: 1px solid red;
+    padding: 0.2rem;
+}
 
 /*  */
 

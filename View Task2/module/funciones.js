@@ -21,7 +21,9 @@ export function renderCards(lista, container_card) {
 `;
     });
     container_card.innerHTML = listado
-}
+} 
+
+
 
 
 export function render_check(array_categories, container_categories) {
@@ -31,11 +33,15 @@ export function render_check(array_categories, container_categories) {
             ` <div class="form-check form-check-inline">
     <input class="form-check-input" type="checkbox" id="${element}" value="${element}">
     <label class="form-check-label" for="${element}">${element}</label>
-    </div>`;
+    </div>`; 
 
     })
     container_categories.innerHTML = iterable_check
 }
+
+
+
+
 
 
 export function filterByCheck(allEvents) {
@@ -53,9 +59,17 @@ export function filterByCheck(allEvents) {
 
 
 
+
+
+
+
 export function filterBySearch(allEvent, valueSearch) {
     return allEvent.filter(every => every.name.toLowerCase().includes(valueSearch.toLowerCase()))
 } 
+
+
+
+
 
 
 export function filterGeneral(allEvent, valueSearch) {
